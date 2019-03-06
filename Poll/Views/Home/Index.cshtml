@@ -5,7 +5,11 @@
 
 <form id="poll-form">
     @foreach (var question in Model.Questions) {
-        <partial name="QuestionTemplates/@question.GetTemplateName()" model="@question" />
+        <div class="form-group">
+            <partial name="QuestionTemplates/@question.GetTemplateName()" model="@question" />
+        </div>
     }
-    <input type="submit" class="btn btn-success" value="Send" id="submit" />
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Send" id="submit" />
+    </div>
 </form>

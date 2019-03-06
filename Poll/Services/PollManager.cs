@@ -9,18 +9,6 @@ namespace Poll.Services {
 
     public class PollManager : IPollManager {
 
-        /// <summary>
-        // Used for save validation and process result.
-        /// </summary>
-        public class PollFormValidProcessResult : IPollFormValidProcessResult {
-
-            public bool IsValid { get; set; } = false;
-
-            public IDictionary<PollQuestion, UserAnswerSelectData> SelectedSingleAnswer { get; set; } = new Dictionary<PollQuestion, UserAnswerSelectData>();
-            public IDictionary<PollQuestion, UserAnswerSelectData[]> SelectedMultipleAnswer { get; set; } = new Dictionary<PollQuestion, UserAnswerSelectData[]>();
-
-        }
-
         private readonly DefaultContext _dbContext;
 
         public PollManager(DefaultContext dbContext) {
@@ -155,6 +143,12 @@ namespace Poll.Services {
 
         }
 
+        /// <summary>
+        /// Add user answer, by question and answer data.
+        /// </summary>
+        /// <param name="question"></param>
+        /// <param name="answersData"></param>
+        /// <returns></returns>
         private async Task<UserAnswer> AddUserAnswerWithSelectAnwerData(PollQuestion question, params UserAnswerSelectData[] answersData) {
 
             var addedUserAnswer = await _dbContext.UserAnswers.AddAsync(new UserAnswer() {

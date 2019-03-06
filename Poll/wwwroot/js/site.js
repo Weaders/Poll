@@ -63,7 +63,7 @@
 
                 $.post('home/SubmitPoll', this.$form.serialize())
                     .done(() => {
-                        this.$form.prepend('<div class="response text-success">Спасибо за ответы!</div>')
+                        this.$form.prepend('<div class="response alert alert-success">Спасибо за ответы!</div>')
                     });
             }
 

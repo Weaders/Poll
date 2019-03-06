@@ -1,0 +1,15 @@
+﻿@model Poll.ViewModels.QuestionSelectAnswer
+
+<div class="question" data-type="@Model.QuestionType">
+    @Model.Text
+
+    @foreach (var answer in Model.Answers) {
+        <div class="form-check">
+            <input class="form-check-input" id="q-@Model.Id-a-@answer.Id" type="radio" name="@($"SingleAnswer[{Model.Id}]")" value="@answer.Id" />
+            <label class="form-check-label" for="q-@Model.Id-a-@answer.Id">
+                @answer.Text
+            </label>
+        </div>
+    }
+        
+</div>

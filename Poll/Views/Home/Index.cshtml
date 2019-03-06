@@ -1,0 +1,11 @@
+﻿@model Poll.ViewModels.PollFormView
+@{
+    ViewData["Title"] = "Poll";
+}
+
+<form id="poll-form">
+    @foreach (var question in Model.Questions) {
+        <partial name="QuestionTemplates/@question.GetTemplateName()" model="@question" />
+    }
+    <input type="submit" class="btn btn-success" value="Send" id="submit" />
+</form>

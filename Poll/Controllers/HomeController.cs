@@ -25,11 +25,11 @@ namespace Poll.Controllers {
         [HttpPost]
         public async Task<IActionResult> SubmitPoll(PollFormResult formResult) {
 
-            var validProcess = _pollManager.ValidProcessPollForm(formResult);
+            var validProcessResult = _pollManager.ValidProcessPollForm(formResult);
 
-            if (validProcess.IsValid) {
+            if (validProcessResult.IsValid) {
 
-                await _pollManager.AddPollFormResult(validProcess);
+                await _pollManager.AddPollFormResult(validProcessResult);
                 return Json("Ok");
 
             } else {

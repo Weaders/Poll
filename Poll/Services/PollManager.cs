@@ -24,6 +24,10 @@ namespace Poll.Services {
 
             var result = new PollFormValidProcessResult();
 
+            if (pollFormResult.MultiAnswer == null || pollFormResult.SingleAnswer == null) {
+                return result;
+            }
+
             var questions = _dbContext.Questions.ToArray();
             var answers = _dbContext.Answers.ToArray();
 
